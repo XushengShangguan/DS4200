@@ -155,7 +155,9 @@ penguins.then(function(data) {
     const rollupFunction = function(groupData) {
         const values = groupData.map(d => d.PetalLength).sort(d3.ascending);
         const q1 = d3.quantile(values, 0.25);
-        return { q1};
+        const median = d3.quantile(values, 0.5);
+        const q3 = d3.quantile(values, 0.75);
+        return { q1, median, q3 };
     };
 
     const quartilesBySpecies = d3.rollup(data, rollupFunction, d => d.Species);
@@ -163,7 +165,8 @@ penguins.then(function(data) {
     quartilesBySpecies.forEach((quartiles, Species) => {
         const x = xScale(Species);
         const boxWidth = xScale.bandwidth();
-
+        const IQR = quartiles.q3 - quartiles.q1;
+        
         // Draw vertical lines
         svg.append("line")
             .attr("x1", x + boxWidth / 2)
