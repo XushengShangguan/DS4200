@@ -80,6 +80,19 @@ iris.then(function(data) {
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", (d, i) => "translate(0," + i * 20 + ")");
+    
+        legend.append("circle")
+        .attr("cx", width + 10)  
+        .attr("cy", 9)
+        .attr("r", 5)
+        .style("fill", colorScale);
+
+        legend.append("text")
+        .attr("x", width + 30)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text(d => d);
 
 });
 
