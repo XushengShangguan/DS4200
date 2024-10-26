@@ -10,7 +10,7 @@ iris.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 20, right: 100, bottom: 50, left: 50 };
     const width = 800 - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
 
@@ -82,13 +82,13 @@ iris.then(function(data) {
         .attr("transform", (d, i) => "translate(0," + i * 20 + ")");
     
         legend.append("circle")
-        .attr("cx", width + 10)  
+        .attr("cx", width+10)  
         .attr("cy", 9)
         .attr("r", 5)
         .style("fill", colorScale);
 
         legend.append("text")
-        .attr("x", width + 30)
+        .attr("x", width+30)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "start")
