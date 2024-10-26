@@ -149,7 +149,7 @@ iris.then(function(data) {
         .style("text-anchor", "middle")
         .text("Petal Length");
 
-    //
+    // these two function is used to calculate each quantile range 
     const rollupFunction = function(groupData) {
         const values = groupData.map(d => d.PetalLength).sort(d3.ascending);
         const q1 = d3.quantile(values, 0.25);
@@ -158,8 +158,10 @@ iris.then(function(data) {
         return { q1, median, q3 };
     };
 
+    
     const quartilesBySpecies = d3.rollup(data, rollupFunction, d => d.Species);
 
+    // this function is used to draw the bar plot
     quartilesBySpecies.forEach((quartiles, Species) => {
         const x = xScale(Species);
         const boxWidth = xScale.bandwidth();
