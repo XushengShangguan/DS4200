@@ -50,3 +50,16 @@ img {
     display: block;
     margin: 10px auto;
 }
+a {
+    color: #ff6347; /* Change the color to a desired one (e.g., Tomato) */
+    text-decoration: none; /* Remove underline, if desired */
+}
+
+a:hover {
+    color: #ff4500; /* Change color when the user hovers over the link */
+    text-decoration: underline; /* Optionally add underline on hover */
+}
+
+a:visited {
+    color: #800080; /* Change color for visited links (e.g., purple) */
+}
