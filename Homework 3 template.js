@@ -45,7 +45,7 @@ iris.then(function(data) {
     .enter().append("circle")
     .attr("cx", d => xScale(d.PetalLength))
     .attr("cy", d => yScale(d.PetalWidth))
-    .attr("r", 5)
+    .attr("r", 3)
     .style("fill", d => colorScale(d.Species));
     
 
@@ -55,7 +55,7 @@ iris.then(function(data) {
     .call(d3.axisBottom(xScale))
     .append("text")
     .attr("x", width / 2)
-    .attr("y", 40)
+    .attr("y", 30)
     .style("fill", "black")
     .style("text-anchor", "middle")
     .text("Petal Length");
@@ -67,7 +67,7 @@ iris.then(function(data) {
     .call(d3.axisLeft(yScale))
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", -40)
+    .attr("y", -30)
     .attr("x", -height / 2)
     .style("fill", "black")
     .style("text-anchor", "middle")
@@ -83,8 +83,8 @@ iris.then(function(data) {
     
         legend.append("circle")
         .attr("cx", width+10)  
-        .attr("cy", 9)
-        .attr("r", 5)
+        .attr("cy", 6)
+        .attr("r", 3)
         .style("fill", colorScale);
 
         legend.append("text")
@@ -119,7 +119,7 @@ iris.then(function(data) {
     const xScale = d3.scaleBand()
         .domain(["setosa", "versicolor", "virginica"])
         .range([0, width])
-        .padding(0.2);
+        .padding(0.1);
 
     const yScale = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.PetalLength)])
@@ -136,7 +136,7 @@ iris.then(function(data) {
     // Add x-axis label
     svg.append("text")
         .attr("x", width / 2)
-        .attr("y", height + margin.bottom - 15)
+        .attr("y", height + margin.bottom - 10)
         .style("text-anchor", "middle")
         .text("Species");
     
