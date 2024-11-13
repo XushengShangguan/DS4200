@@ -2,8 +2,9 @@ const ecar =  d3.csv("Electric Vehicle Population Data.csv");
 
 ecar.then(function(data) {
     data.forEach(function(d) {
-        d.Model = +d.Model;
-        d.ElectricRange = +d.ElectricRange
+        d.Model = +d['Model'];
+        d.ElectricRange = +d['Electrical Range'];
+
     });
 
     // define the dimensions and margins for the SVG
@@ -19,7 +20,7 @@ ecar.then(function(data) {
 
     // add color scales and scakes
     const colorScale = d3.scaleOrdinal()
-    .domain(ecar.map(d => d.Make))
+    .domain(ecar.map(d => d['Make']))
     .range(d3.schemeCatagory10);
 
     const xScale = d3.scaleLinear()
@@ -37,7 +38,7 @@ ecar.then(function(data) {
     .attr("cx", d => xScale(d.Model))
     .attr("cy", d => yScale(d.ElectricRange))
     .attr("r", 3)
-    .style("fill", d => colorScale(d.Make));
+    .style("fill", d => colorScale(d['Make']));
     
 
     // Add x-axis label
